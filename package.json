@@ -1,0 +1,19 @@
+{
+  "name": "typescript-with-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "start:dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "start:prod": "tsc && nodemon ./build/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "express": "^4.17.1",
+    "ts-node-dev": "^1.0.0-pre.49",
+    "typescript": "^3.9.5"
+  }
+}
