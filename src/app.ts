@@ -1,13 +1,13 @@
 import express from 'express'
+import config from './config'
 
 const app: express.Application = express()
-const PORT = 8000
 
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
 
-app.listen(PORT, (err) => {
+app.listen(config.port, (err) => {
   if (err) console.error(err)
-  console.log(`Server is listening at http://localhost:${PORT}`)
+  console.log(`Server is listening at http://localhost:${config.port}`)
 })
