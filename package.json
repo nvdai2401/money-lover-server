@@ -17,8 +17,11 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.9.25",
     "ts-node-dev": "^1.0.0-pre.49",
-    "typescript": "^3.9.5"
+    "typedi": "^0.8.0",
+    "typescript": "^3.9.5",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",

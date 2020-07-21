@@ -1,13 +1,21 @@
 import express from 'express'
 import config from './config'
+import Logger from './loaders/logger'
 
-const app: express.Application = express()
+const startServer = async () => {
+  const app: express.Application = express()
+  await require('./loaders').default({ expressApp: app })
+  app.listen(config.port, (err) => {
+    if (err) {
+      Logger.error(err)
+      process.exit(1)
+    }
+    Logger.info(`
+      ################################################
+      🛡️  Server listening on port: ${config.port} 🛡️ 
+      ################################################
+    `)
+  })
+}
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
-
-app.listen(config.port, (err) => {
-  if (err) console.error(err)
-  console.log(`Server is listening at http://localhost:${config.port}`)
-})
+startServer()
