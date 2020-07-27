@@ -9,7 +9,6 @@ export default ({ app }: { app: express.Application }) => {
   })
 
   app.use(cors())
-  // app.use(config.api.prefix)
   // Middleware that transforms the raw string of req.body into json
   app.use(bodyParser.json())
 }
