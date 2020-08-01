@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import express from 'express'
 import config from './config'
 import Logger from './loaders/logger'
@@ -11,7 +12,7 @@ const startServer = async () => {
       process.exit(1)
     }
     Logger.info(`
-      ################################################
+      ################################################mongoose
       🛡️  Server listening on port: ${config.port} 🛡️ 
       ################################################
     `)
