@@ -1,42 +1,30 @@
-import dotenv from 'dotenv'
-
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-
-const envFound = dotenv.config()
-
-if (envFound.error) {
-  throw new Error("⚠️  Couldn't find .env file  ⚠️")
-}
-
 const config = {
-  port: parseInt(process.env.PORT, 10),
-  databaseURL: process.env.MONGODB_URI,
+  app: {
+    port: parseInt(process.env.APP_PORT, 10) || 8000,
+    env: process.env.NODE_ENV || 'development',
+    host: process.env.APP_HOST || 'http://localhost',
+  },
+  mongodb: {
+    url: process.env.MONGODB_URI || 'mongodb://localhost:27017/money_lover',
+  },
+  graphqlUploadExpress: {
+    maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10) || 100000000,
+    maxFiles: parseInt(process.env.MAX_FILES, 10) || 10,
+  },
+  serviceProviders: [],
   /**
    * API configs
    */
   api: {
     prefix: '/api',
+    graphql: '/graphql',
+    playground: '/playground',
   },
   /**
    * Used by winston logger
    */
   logs: {
     level: process.env.LOG_LEVEL || 'silly',
-  },
-  /**
-   * Agenda.js stuff
-   */
-  agenda: {
-    dbCollection: process.env.AGENDA_DB_COLLECTION,
-    pooltime: process.env.AGENDA_POOL_TIME,
-    concurrency: parseInt(process.env.AGENDA_CONCURRENCY, 10),
-  },
-  /**
-   * Agendash config
-   */
-  agendash: {
-    user: 'agendash',
-    password: '123456',
   },
 }
 
