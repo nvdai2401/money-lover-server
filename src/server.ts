@@ -12,7 +12,6 @@ import bootstrapper from './bootstrapper'
 
 const runApp = async () => {
   const container = await bootstrapper()
-  console.log('container', container)
   const app = createApp(container)
   const httpServer = http.createServer(app)
   httpServer.listen(config.app.port, () => {

@@ -1,7 +1,8 @@
 export interface IUser {
-  _id: string
-  name: string
+  id: string
   email: string
   password: string
-  salt: string
+  name: string
+  lastModified: string
+  avatar: string
 }
