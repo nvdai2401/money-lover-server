@@ -4,9 +4,11 @@ import config from './config'
 
 const bootstrapper = async (): Promise<AwilixContainer> => {
   const { serviceProviders } = config
+
   container.register({
     config: asValue(config),
   })
+
   const services = serviceProviders.map((Service) => new Service(container))
   services.forEach((service) => {
     service.register()

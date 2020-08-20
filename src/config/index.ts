@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const config = {
   app: {
     port: parseInt(process.env.APP_PORT, 10) || 8000,
@@ -20,7 +21,7 @@ const config = {
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10) || 100000000,
     maxFiles: parseInt(process.env.MAX_FILES, 10) || 10,
   },
-  serviceProviders: [require('../services/ThirdPartyServiceProvider')],
+  serviceProviders: [require('../services/ThirdPartyServiceProvider').default],
   /**
    * API configs
    */
