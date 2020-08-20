@@ -1,7 +1,7 @@
 import { IUser } from '../../interfaces/IUser'
 
 class User {
-  private _id: string
+  readonly _id: string
   private _email: string
   private _password: string
   private _name: string

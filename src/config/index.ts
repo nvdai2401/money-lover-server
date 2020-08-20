@@ -21,7 +21,10 @@ const config = {
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10) || 100000000,
     maxFiles: parseInt(process.env.MAX_FILES, 10) || 10,
   },
-  serviceProviders: [require('../services/ThirdPartyServiceProvider').default],
+  serviceProviders: [
+    require('../services/ThirdPartyServiceProvider').default,
+    require('../modules/user/UserServiceProvider').default,
+  ],
   /**
    * API configs
    */
