@@ -27,7 +27,7 @@ export default (container): express.Application => {
     graphqlHTTP((req) => ({
       schema,
       graphiql: config.app.env === 'development',
-      // context: { container: req.container, req }, // bind http request context to graphQl context
+      context: { container: req.container, req }, // bind http request context to graphQl context
     })),
   )
   app.get(

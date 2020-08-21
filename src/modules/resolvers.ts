@@ -1,5 +1,6 @@
 import { merge } from 'lodash'
 import { GraphQLUpload } from 'graphql-upload'
+// import userResolver from './user/graphql/resolver'
 
 const baseResolver = {
   Upload: GraphQLUpload,
