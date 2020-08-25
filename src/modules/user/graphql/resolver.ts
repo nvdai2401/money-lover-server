@@ -1,5 +1,5 @@
 import { IUser } from '../../../interfaces/IUser'
-import { createUser } from '../validationSchema'
+import { createUser, login } from '../validationSchema'
 
 const resolvers = {
   Query: {
@@ -15,6 +15,13 @@ const resolvers = {
       },
       resolve: (_, { user }, { container }): IUser =>
         container.resolve('authService').register(user),
+    },
+    login: {
+      extensions: {
+        validationSchema: login,
+      },
+      resolve: (_, { user }, { container }): any =>
+        container.resolve('authService').login(user.email, user.password),
     },
   },
 }

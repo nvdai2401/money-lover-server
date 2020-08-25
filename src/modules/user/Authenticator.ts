@@ -13,6 +13,26 @@ class Authenticator {
     this.jwt = jwt
   }
 
+  async login(email: string, password: string): Promise<any> {
+    const user = await this.userProvider.findByEmail(email)
+
+    if (!user) {
+      throw new AuthenticationError('Email or password is invalid')
+    }
+    if (!this.bcrypt.compare(password, user.password)) {
+      throw new AuthenticationError('Email or password is invalid')
+    }
+
+    return {
+      token: this.jwt.encode({
+        id: user._id,
+        name: user._name,
+        email: user._email,
+      }),
+      user,
+    }
+  }
+
   async register(user: any): Promise<IUser> {
     const registeredUser = await this.userProvider.findByEmail(user.email)
     if (registeredUser) {

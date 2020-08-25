@@ -13,14 +13,25 @@ const typeDefs = gql`
     items: [User]!
   }
 
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
+
   input CreateUserInput {
     password: String!
     name: String!
     email: String!
   }
 
+  input LoginInput {
+    password: String!
+    email: String!
+  }
+
   extend type Mutation {
     createUser(user: CreateUserInput!): User
+    login(user: LoginInput!): AuthPayload
   }
 
   extend type Query {
