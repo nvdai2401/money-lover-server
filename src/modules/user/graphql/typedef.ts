@@ -24,7 +24,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    userList(): UserList
+    userList: UserList
   }
 `
 

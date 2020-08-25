@@ -17,6 +17,22 @@ class UserProvider {
       .then(this.factory)
   }
 
+  public findByEmail(email: string): IUser {
+    return this.users.findOne({ email, deleted: false }).then(this.factory)
+  }
+
+  public async create(user: any): Promise<IUser> {
+    const inserted = await this.users.insertOne({
+      email: user.email,
+      name: user.name,
+      password: user.password,
+      deleted: false,
+      lastModified: moment().format(),
+      avatar: user.avatar,
+    })
+    return this.factory(inserted.ops[0])
+  }
+
   public factory(rawData: any): IUser {
     if (!rawData) return null
 

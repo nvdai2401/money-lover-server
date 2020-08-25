@@ -1,6 +1,7 @@
 import { asClass } from 'awilix'
 import ServiceProvider from '../../ServiceProvider'
 import UserProvider from './UserProvider'
+import Authenticator from './Authenticator'
 
 class UserServiceProvider extends ServiceProvider {
   register(): void {
@@ -10,6 +11,7 @@ class UserServiceProvider extends ServiceProvider {
         users: injectedContainer.resolve('db').collection('users'),
       })),
     )
+    this.container.register('authService', asClass(Authenticator).singleton())
   }
 }
 

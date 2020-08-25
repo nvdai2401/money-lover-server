@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 import { mergeTypes } from 'merge-graphql-schemas'
-console.log('object')
 import userTypeDefs from './user/graphql/typedef'
 
 const baseTypeDefs = gql`
@@ -16,8 +15,7 @@ const baseTypeDefs = gql`
     hello(name: String): String
   }
 `
-console.log('object')
-console.log(userTypeDefs)
-const typeDefs = [baseTypeDefs]
+
+const typeDefs = [baseTypeDefs, userTypeDefs]
 
 export default mergeTypes(typeDefs, { all: true })

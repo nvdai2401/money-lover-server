@@ -1,3 +1,5 @@
+import { IUser } from '../../../interfaces/IUser'
+
 const resolvers = {
   Query: {
     userList: (_, args, { container }) => {
@@ -6,7 +8,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: (_, { user }, { container }) => container.register(user),
+    createUser: (_, { user }, { container }): IUser =>
+      container.resolve('authService').register(user),
   },
 }
 
