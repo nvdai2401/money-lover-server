@@ -1,4 +1,5 @@
 import { IUser } from '../../../interfaces/IUser'
+import { createUser } from '../validationSchema'
 
 const resolvers = {
   Query: {
@@ -8,8 +9,13 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: (_, { user }, { container }): IUser =>
-      container.resolve('authService').register(user),
+    createUser: {
+      extensions: {
+        validationSchema: createUser,
+      },
+      resolve: (_, { user }, { container }): IUser =>
+        container.resolve('authService').register(user),
+    },
   },
 }
 

@@ -1,3 +1,5 @@
 import logging from './logging'
+import validation from './validation'
+import errorHandler from './errorHandler'
 
-export { logging }
+export { logging, validation, errorHandler }
