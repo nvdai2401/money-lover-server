@@ -6,7 +6,7 @@ import directiveResolvers from './directiveResolvers'
 import { logging, validation, errorHandler } from './middlewares'
 
 export default applyMiddleware(
-  makeExecutableSchema({ typeDefs, resolvers }),
+  makeExecutableSchema({ typeDefs, resolvers, directiveResolvers }),
   errorHandler,
   logging,
   validation,

@@ -3,7 +3,7 @@ import { mergeTypes } from 'merge-graphql-schemas'
 import userTypeDefs from './user/graphql/typedef'
 
 const baseTypeDefs = gql`
-  # directive @isAuthenticated on FIELD_DEFINITION
+  directive @isAuthenticated on FIELD_DEFINITION
   scalar Upload
   scalar Date
 

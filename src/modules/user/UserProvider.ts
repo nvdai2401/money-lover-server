@@ -11,17 +11,26 @@ class UserProvider {
     this.users = users
   }
 
-  public findById(id: string): IUser {
+  async find(): Promise<any> {
+    const users = await this.users.find({ deleted: false }).toArray()
+
+    return {
+      total: users.length,
+      items: users.map((user) => this.factory(user)),
+    }
+  }
+
+  findById(id: string): IUser {
     return this.users
       .findOne({ _id: ObjectId(id), deleted: false })
       .then(this.factory)
   }
 
-  public findByEmail(email: string): IUser {
+  findByEmail(email: string): IUser {
     return this.users.findOne({ email, deleted: false }).then(this.factory)
   }
 
-  public async create(user: any): Promise<IUser> {
+  async create(user: any): Promise<IUser> {
     const inserted = await this.users.insertOne({
       email: user.email,
       name: user.name,
@@ -50,6 +59,7 @@ class UserProvider {
     user.name = data.name
     user.lastModified = data.lastModified
     user.avatar = data.avatar
+
     return user
   }
 }

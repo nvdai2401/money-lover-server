@@ -33,6 +33,15 @@ class Authenticator {
     }
   }
 
+  verify(token: string): any {
+    try {
+      const payload = this.jwt.decode(token)
+      return this.userProvider.factory(payload)
+    } catch (err) {
+      throw new AuthenticationError('Invalid token', err)
+    }
+  }
+
   async register(user: any): Promise<IUser> {
     const registeredUser = await this.userProvider.findByEmail(user.email)
     if (registeredUser) {

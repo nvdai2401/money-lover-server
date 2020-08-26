@@ -11,6 +11,7 @@ const typeDefs = gql`
 
   type UserList {
     items: [User]!
+    total: Int!
   }
 
   type AuthPayload {
@@ -35,7 +36,8 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    userList: UserList
+    userList: UserList @isAuthenticated
+    me: User
   }
 `
 
