@@ -3,8 +3,8 @@ import { createUser, login } from '../validationSchema'
 
 const resolvers = {
   Query: {
-    me: (_, args, { container, req }) =>
-      container.resolve('userProvider').findById(req.user.id),
+    // me: (_, args, { container, req }) =>
+    //   container.resolve('userProvider').findById(req.user.id),
     userList: async (_, args, { container }): Promise<any> => {
       const userProvider = container.resolve('userProvider')
       const users = await userProvider.find()

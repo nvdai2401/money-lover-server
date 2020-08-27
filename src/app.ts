@@ -23,7 +23,7 @@ export default (container): express.Application => {
   app.use(config.api.prefix, router)
   app.use(
     config.api.graphql,
-    graphqlUploadExpress(config.graphqlUploadExpress),
+    // graphqlUploadExpress(config.graphqlUploadExpress),
     graphqlHTTP((req) => ({
       schema,
       graphiql: config.app.env === 'development',
@@ -38,21 +38,3 @@ export default (container): express.Application => {
   )
   return app
 }
-
-// const startServer = async () => {
-//   const app: express.Application = express()
-//   await require('./loaders').default({ expressApp: app })
-//   app.listen(config.app.port, (err) => {
-//     if (err) {
-//       Logger.error(err)
-//       process.exit(1)
-//     }
-//     Logger.info(`
-//       ################################################
-//       🛡️  Server listening on port: ${config.app.port} 🛡️
-//       ################################################
-//     `)
-//   })
-// }
-
-// startServer()
