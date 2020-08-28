@@ -36,7 +36,7 @@ const typeDefs = gql`
   }
 
   extend type Query {
-    userList: UserList @isAuthenticated
+    userList: UserList
     me: User
   }
 `
