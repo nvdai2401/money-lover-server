@@ -24,6 +24,7 @@ const config = {
   serviceProviders: [
     require('../services/ThirdPartyServiceProvider').default,
     require('../modules/user/UserServiceProvider').default,
+    require('../modules/transaction/TransactionServiceProvider').default,
   ],
   /**
    * API configs

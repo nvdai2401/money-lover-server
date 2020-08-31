@@ -3,7 +3,8 @@ export interface ITransaction {
   amount: number
   category: string
   createdAt: string
-  updatedAt: string
+  lastModified: string
   note: string
   image: string
+  deleted?: boolean
 }

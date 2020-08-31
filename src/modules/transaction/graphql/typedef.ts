@@ -6,7 +6,7 @@ const typeDefs = gql`
     amount: Int
     category: String
     createdAt: String
-    updatedAt: String
+    lastModified: String
     note: String
     image: String
   }
@@ -22,10 +22,11 @@ const typeDefs = gql`
     createdAt: String!
     name: String
     image: String
+    note: String
   }
 
   extend type Mutation {
-    createTransaction(input: CreateTransactionInput!): Transaction
+    createTransaction(transaction: CreateTransactionInput!): Transaction
   }
 
   extend type Query {

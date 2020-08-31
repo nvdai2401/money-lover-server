@@ -3,7 +3,7 @@ class Transaction {
   private _amount: number
   private _category: string
   private _createdAt: string
-  private _updatedAt: string
+  private _lastModified: string
   private _note: string
   private _image: string
 
@@ -12,7 +12,7 @@ class Transaction {
     this._amount = 0
     this._category = ''
     this._createdAt = ''
-    this._updatedAt = ''
+    this._lastModified = ''
     this._note = ''
     this._image = ''
   }
@@ -45,12 +45,12 @@ class Transaction {
     this._createdAt = createdAt
   }
 
-  public get updatedAt(): string {
-    return this._updatedAt
+  public get lastModified(): string {
+    return this._lastModified
   }
 
-  public set updatedAt(updatedAt: string) {
-    this._updatedAt = updatedAt
+  public set lastModified(lastModified: string) {
+    this._lastModified = lastModified
   }
 
   public get note(): string {

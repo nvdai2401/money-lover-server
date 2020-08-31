@@ -63,12 +63,12 @@ class User {
 
   public toJson(): IUser {
     return {
-      // id: this._id,
-      // email: this._email,
-      // password: this._password,
-      // name: this._name,
-      // lastModified: this._lastModified,
-      // avatar: this._avatar,
+      id: this._id,
+      email: this._email,
+      password: this._password,
+      name: this._name,
+      lastModified: this._lastModified,
+      avatar: this._avatar,
     }
   }
 }

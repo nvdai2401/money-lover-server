@@ -5,8 +5,9 @@ const resolvers = {
     },
   },
   Mutation: {
-    createTransaction: (_, args, { container }) => {
-      return
+    createTransaction: (_, { transaction }, { container }) => {
+      console.log(transaction)
+      return container.resolve('transactionProvider').create(transaction)
     },
   },
 }
